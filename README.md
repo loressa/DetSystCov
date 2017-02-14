@@ -22,5 +22,6 @@
 * 2 - If you have more than one job submitted, you will need to combine the output from all your jobs into a single vector prior to run make_cov_matrix_mean.C
 * 3 - Finally edit and run make_cov_matrix to compute the covariance matrix (version using the mean value for each bin, if you want to use the nominal you will need an extra step to calculate the nominal number of events per bin by running once dune_dst.C without tweaks)
 
-Note: a single loop over the 1.8M events for the FGT takes ~2 hours
-Note: in case of many tweaks, ROOT might give problems and you might need to run make_cov_matrix.C several times on a fraction of the tweaks and then combine the output to compute the final covariance matrix 
+--- Notes ---
+* A single loop over the 1.8M events for the FGT takes ~2 hours
+* In case of many tweaks, ROOT might give problems and you might need to run make_cov_matrix.C several times on a fraction of the tweaks and then combine the output to compute the final covariance matrix 
