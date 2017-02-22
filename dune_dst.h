@@ -67,6 +67,7 @@ public :
    Int_t           recoFSParticles_numHits[kMaxrecoFSParticles];   //[recoFSParticles_]
    float   recoFSParticles_dEdx[kMaxrecoFSParticles];
    Float_t         recoFSParticles_momentum[kMaxrecoFSParticles][3];   //[recoFSParticles_]
+   Int_t           fgtweight;
 
    // List of branches
    //TBranch        *b_genie_mc_truth;   //!
@@ -230,6 +231,7 @@ void dune_dst::Init(TTree *tree)
    fChain->SetBranchAddress("recoFSParticles.pdg", recoFSParticles_pdg, &b_recoFSParticles_pdg);
    fChain->SetBranchAddress("recoFSParticles.id", recoFSParticles_id, &b_recoFSParticles_id);
    fChain->SetBranchAddress("recoFSParticles.energy", recoFSParticles_energy, &b_recoFSParticles_energy);
+   fChain->SetBranchAddress("fgtweight", fgtweight, &fgtweight);
    Notify();
 }
 

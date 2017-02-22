@@ -35,6 +35,7 @@ void fgt_fixer::Loop()
   Int_t           out_reaction_reco;
   Float_t         out_Ev_reco;
   Float_t         out_y_reco;
+  Int_t           out_weight;
 
   out_tree->Branch("trueFSParticles", &out_trueFSParticles, "trueFSParticles/I");
   out_tree->Branch("trueFSParticles.pdg", out_trueFSParticles_pdg, "trueFSParticles.pdg[trueFSParticles]/I");//!
@@ -50,6 +51,8 @@ void fgt_fixer::Loop()
  out_tree->Branch("recoFSParticles.pdg", out_recoFSParticles_pdg, "recoFSParticles.pdg[recoFSParticles]/I");//!
  out_tree->Branch("recoFSParticles.id", out_recoFSParticles_id, "recoFSParticles.id[recoFSParticles]/I");//!
  out_tree->Branch("recoFSParticles.energy", out_recoFSParticles_energy, "recoFSParticles.energy[recoFSParticles]/F");//!
+
+ out_tree->Branch("fgtweight", out_weight, "fgtweight/I");
 
   TH1D* wgt = new TH1D("wgt","wgt", 80, -5, 3);
 
@@ -168,8 +171,11 @@ void fgt_fixer::Loop()
       }
     }
   
-    //Fill tree only if weight is 1
-    if(FGTweight==1)
+    //Chris: here is stored the weight                                                                                         
+    out_weight=FGTweight;
+
+    //Fill tree only if weight is 1 or -3 to make files smaller and be more efficient                                        
+    if((FGTweight==1)||(FGTweight==-3))
       out_tree->Fill();
     
     wgt->Fill(FGTweight);

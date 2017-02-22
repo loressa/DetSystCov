@@ -893,7 +893,9 @@ void dune_dst::Loop(int mySeed)
     if(antinu)
       index = index+157;
 
-    vec[index][itweak]+= 1.0;// wgt; //if using the second method, wgt should go there instead
+    //Chris: here when adding the event to the appropriate vector component, it takes into account the weight,
+    //so those events with -3 should be added with that weight                                                               
+    vec[index][itweak]+= 1.0*fgtweight; // wgt; //if using the second method, wgt should go there instead   
     Enew_vs_Eold->Fill(Ev_reco,new_Ereco);
     ynew_vs_yold->Fill(y_reco,new_Yreco);
     samplenew_vs_sampleold->Fill(sample_reco,new_sample);

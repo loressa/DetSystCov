@@ -45,6 +45,7 @@ public :
    Int_t           recoFSParticles_pdg[kMaxrecoFSParticles];   //[recoFSParticles_]
    Int_t           recoFSParticles_id[kMaxrecoFSParticles];   //[recoFSParticles_]
    Float_t         recoFSParticles_energy[kMaxrecoFSParticles];   //[recoFSParticles_]
+   Int_t           fgtweight;
 
    // List of branches
    //TBranch        *b_genie_mc_truth;   //!
