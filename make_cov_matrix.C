@@ -86,6 +86,9 @@ void make_cov_matrix()
   }
   
   //final matrices, same but dropping IMD and e-nu 
+  //ATTN: dropped for the first iteration for FGT
+  //if decided to use IMD and e-nu, the below should be commented out
+  //and frac_cov and cor stored instead of the _final ones
   for (int i =0; i<n_bins_init-2; i++){
     for (int j =0; j<n_bins_init-2; j++){
       int i_matrix = 0, j_matrix = 0;
@@ -105,11 +108,11 @@ void make_cov_matrix()
   //write out
   TFile * cov_file = new TFile("mean_fgt.root","RECREATE");
   cov_file->cd(); 
-  mean.Write("mean");
-  cov_file->Close();
-  cor.Write("cor");
+  //  mean.Write("mean");
+  //  cov_file->Close();
+  //  cor.Write("cor");
   
-  cov_final.Write("cov");
+  //  cov_final.Write("cov");
   frac_cov_final.Write("frac_cov");
   cor_final.Write("cor");
   cov_file->Close();
